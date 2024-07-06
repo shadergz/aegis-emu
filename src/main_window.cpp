@@ -15,8 +15,9 @@ namespace aegis {
         if (adw_style_manager_get_system_supports_color_schemes(styleManager)) {
             adw_style_manager_set_color_scheme(styleManager, ADW_COLOR_SCHEME_PREFER_DARK);
         }
-        const fs::path current{"."};
+        const virtfs::path current{"."};
         interface::app->checkAndTouchDirectories(current, dirIsValid);
+        interface::app->initialize();
     }
     MainWindow::~MainWindow() = default;
 }
