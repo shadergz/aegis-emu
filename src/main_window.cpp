@@ -1,12 +1,15 @@
 #include <memory>
 #include <adwaita.h>
 
+#include <base/exception.h>
 #include <interface/application.h>
 #include <main_window.h>
 
 namespace aegis {
+    using namespace interface;
+
     MainWindow::MainWindow() {
-        interface::app = std::make_unique<interface::Application>();
+        app = std::make_unique<Application>();
 
         set_title("Aegis");
         set_default_size(640, 480);
@@ -16,8 +19,14 @@ namespace aegis {
             adw_style_manager_set_color_scheme(styleManager, ADW_COLOR_SCHEME_PREFER_DARK);
         }
         const virtfs::path current{"."};
-        interface::app->checkAndTouchDirectories(current, dirIsValid);
-        interface::app->initialize();
+        app->checkAndTouchDirectories(current, dirIsValid);
+        app->placeUserRequest("keys_prod", &askUserKeys);
+
+        app->initialize();
     }
     MainWindow::~MainWindow() = default;
+
+    bool MainWindow::askUserKeys() {
+        return {};
+    }
 }

@@ -7,6 +7,8 @@ namespace aegis {
     public:
         MainWindow();
         ~MainWindow() override;
+
+        static bool askUserKeys();
     private:
         bool dirIsValid{};
     };
