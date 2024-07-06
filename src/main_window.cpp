@@ -20,8 +20,8 @@ namespace aegis {
         }
         const virtfs::path current{"."};
         app->checkAndTouchDirectories(current, dirIsValid);
-        app->placeUserRequest("keys_prod", &askUserKeys);
 
+        app->placeUserRequest("keys_prod", &askUserKeys);
         app->initialize();
     }
     MainWindow::~MainWindow() = default;
